@@ -19,7 +19,7 @@ import java.sql.Statement;
 public class DBAcess {
 	
 	private String driver = "com.mysql.jdbc.Driver";
-	private String url = "jdbc:mysql://127.0.0.1:3306/lim_test"; 
+	private String url = "jdbc:mysql://120.25.193.203:3306/lim_test"; 
 	private String username = "zhirong_lu"; 
 	private String password = "woshengri"; 
 	private Connection conn; 

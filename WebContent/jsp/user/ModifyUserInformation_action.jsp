@@ -10,15 +10,15 @@
 		response.sendRedirect(basePath+"jsp/login/login.jsp");
 	}
 	
-	//String email = request.getParameter("email");
-	//String Telephone = request.getParameter("Telephone");
-	//String address = request.getParameter("address");
-	//String company = request.getParameter("company");
+	String email = request.getParameter("email");
+	String Telephone = request.getParameter("Telephone");
+	String address = request.getParameter("address");
+	String company = request.getParameter("company");
 	
-	String email = new String(request.getParameter("email").getBytes("ISO-8859-1"), "UTF-8");
+	/*String email = new String(request.getParameter("email").getBytes("ISO-8859-1"), "UTF-8");
 	String Telephone = new String(request.getParameter("Telephone").getBytes("ISO-8859-1"), "UTF-8");
-	String address = new String(request.getParameter("address").getBytes("ISO-8859-1"), "UTF-8");
-	String company = new String(request.getParameter("company").getBytes("ISO-8859-1"), "UTF-8");
+	String address = new String(request.getParameter("address").getBytes("ISO-8859-1"), "utf8");
+	String company = new String(request.getParameter("company").getBytes("ISO-8859-1"), "utf8");*/
 	
 	//System.out.println("address: "+address);
 	
@@ -39,7 +39,6 @@
 
 <%
 		}
-		return; 
 	}
 
 %>

@@ -1,7 +1,16 @@
 package com.anchordx.businessbean;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.anchordx.databasebean.DBAcess; 
 import com.anchordx.util.GenerateUUID;
+import com.anchordx.util.ImageUtil;
 
 
 /** 
@@ -69,7 +78,7 @@ public class UserBean {
 	}
 	
 	//修改用户信息 
-	public boolean ModifyUserInformation(String username,String email,String company,String Telephone,String address){
+	/*public boolean ModifyUserInformation(String username,String email,String company,String Telephone,String address){
 		//System.out.println("updatedata");
 		boolean isValid = false; 
 		DBAcess db = new DBAcess(); 
@@ -86,6 +95,53 @@ public class UserBean {
 			db.closeConn(); 
 		} 
 		return isValid; 
+	}*/
+	
+	//修改用户信息 
+	public boolean ModifyUserInformation(String username,String email,String company,String Telephone,String address){
+		String user = "zhirong_lu";
+		String password = "woshengri";
+		String url = "jdbc:mysql://120.25.193.203:3306/lim_test?characterEncoding=utf-8";
+		Connection connection = null;
+		boolean isValid = true;
+		try {
+			connection = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String sql = "update p_user set email=?, company=?, Telephone=?, address=? where username = '"+username+"'";
+		PreparedStatement preparedStatement = null;
+		InputStream inputStream = null;
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, email);
+			//preparedStatement.setString(2, company);
+			preparedStatement.setString(3, Telephone);
+			preparedStatement.setString(4, "广州");
+			inputStream = new ByteArrayInputStream(company.getBytes());
+			preparedStatement.setBinaryStream(2, inputStream, inputStream.available());
+			preparedStatement.execute();
+			isValid = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return isValid;
 	}
 	
 	//修改密码 

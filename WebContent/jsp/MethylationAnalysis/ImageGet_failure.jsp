@@ -23,7 +23,7 @@
 		<meta http-equiv="expires" content="0">  
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3"> 
 		<meta http-equiv="description" content="This is test page">
-		<meta http-equiv="refresh" content ="5;url=<%=basePath%>jsp/MethylationAnalysis/TaskSubmission.jsp">
+		<meta http-equiv="refresh" content ="5;url=<%=basePath%>jsp/welcome/homepage.jsp"> 
 		<!-- 
 			<link rel="stylesheet" type="text/css" href="styles.css"> 
 		--> 
@@ -32,7 +32,7 @@
 	<body> 
 		<div class="alert alert-warning">
                <button type="button" class="close" data-dismiss="alert"></button>
-               <h6 class="alert-heading">很抱歉，您的请求任务系统无法提交到服务器，请重新填写提交或者联系系统管理员！！！</h6>
+               <h6 class="alert-heading">很抱歉，您提交的请求任务系统目前还没分析完成，请耐心等待，若有其他问题，请联系系统管理员！！！</h6>
         </div>
 	</body> 
 </html>
